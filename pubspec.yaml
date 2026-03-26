@@ -52,6 +52,10 @@ dependencies:
   pull_to_refresh: ^2.0.0
   marquee: ^2.3.0
   icon_checkbox: ^1.0.1
+  fluwx: ^5.7.5
+  tobias: ^5.3.4
+  url_launcher: ^6.3.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

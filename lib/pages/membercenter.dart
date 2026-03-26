@@ -77,6 +77,20 @@ class _MembercenterState extends State<Membercenter> {
                     ],
                   ),
                 ),
+              ),
+              SizedBox(height: 10.w,),
+              Row(children: [SizedBox(width: 20,),Text('账户与工具')],),
+              Card(
+                color: Colors.white,
+                child: Container(
+                  width: 350.w,
+                  child: Column(
+                    children: [
+                      buildauthentic()
+
+                    ],
+                  ),
+                ),
               )
 
             ],
@@ -141,6 +155,24 @@ class _MembercenterState extends State<Membercenter> {
         SizedBox(width: 20.w,),
         Text('趣味小游戏',style: TextStyle(),),
         Expanded(child: SizedBox()),
+        Rightarrow()
+      ],),
+    );
+  }
+
+  Widget buildauthentic(){
+    return Container(
+
+      height: 40.w,
+      width: 350.w,
+      padding: EdgeInsets.all(10),
+      child: Row(children: [
+        Image.asset('assets/images/a.png',width: 20.w,height: 20.w,),
+        SizedBox(width: 20.w,),
+        Text('实名认证',style: TextStyle(),),
+        Expanded(child: SizedBox()),
+        Text('已认证'),
+        SizedBox(width: 5.w,),
         Rightarrow()
       ],),
     );

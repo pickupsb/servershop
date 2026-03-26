@@ -36,19 +36,21 @@ class ImageRadio<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(8),
+      // margin: EdgeInsets.all(8),
       child: InkWell(
         onTap: () => onChanged(value),
-        child: Padding(
-          padding: const EdgeInsets.all(5),
-          child: Row(
-            children: [
-              _buildLabel(),
-              const SizedBox(width: 10),
-              _buildText(),
-            ],
-          ),
-        ),
+        child:
+        _buildLabel(),
+        // Padding(
+        //   // padding: const EdgeInsets.all(5),
+        //   child: Row(
+        //     children: [
+        //       _buildLabel(),
+        //       const SizedBox(width: 10),
+        //       // _buildText(),
+        //     ],
+        //   ),
+        // ),
       ),
     );
   }

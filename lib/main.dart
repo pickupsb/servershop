@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluwx/fluwx.dart';
 import 'package:get/get.dart';
+import 'package:servershop/pages/authentication.dart';
 import 'package:servershop/pages/consumerecord.dart';
 import 'package:servershop/pages/homepage.dart';
 import 'package:servershop/pages/mainpage.dart';
@@ -9,7 +11,15 @@ import 'package:servershop/pages/myserver.dart';
 import 'package:servershop/pages/recharge.dart';
 import 'package:servershop/pages/rechargerecord.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Fluwx fluwx = Fluwx();
+  await fluwx.registerApi(
+    appId: 'wxd930ea5d5a258f4f',
+    doOnAndroid: true,
+    doOnIOS: true,
+    universalLink: 'https://your.univerallink.com/link/',
+  );
   runApp(const MyApp());
 }
 
@@ -54,7 +64,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           // builder: EasyLoading.init(),
-          home:Recharge(),
+          home:Membercenter(),
         );
       },
     );

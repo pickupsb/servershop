@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluwx/fluwx.dart';
 import 'package:icon_checkbox/icon_checkbox.dart';
 import 'package:servershop/commondata/commonstyle.dart';
 import 'package:servershop/widgets/buttonwithimage.dart';
 import 'package:servershop/widgets/imagecheckbox.txt';
+import 'package:tobias/tobias.dart';
 
 import '../widgets/backwidget.dart';
 import '../widgets/buttonwithtext.dart';
@@ -17,8 +19,38 @@ class Recharge extends StatefulWidget {
 }
 
 class _RechargeState extends State<Recharge> {
+  ///1微信 2支付宝
+  int paytype = 1;
+
   TextEditingController textEditingController = TextEditingController();
   int? currentselect;
+
+  ///微信支付
+  final Fluwx fluwx = Fluwx();
+  final String _url = 'https://wxpay.wxutil.com/pub_v2/app/app_pay.php';
+  String _result = '无';
+  late Function(WeChatResponse) responseListener;
+  Tobias tobias = Tobias();
+
+  @override
+  void dispose() {
+    super.dispose();
+    fluwx.removeSubscriber(responseListener);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    responseListener = (response) {
+      if (response is WeChatPaymentResponse) {
+        setState(() {
+          _result = 'pay :${response.isSuccessful}';
+        });
+      }
+    };
+    fluwx.addSubscriber(responseListener);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +69,26 @@ class _RechargeState extends State<Recharge> {
           SizedBox(height: 10.w,),
           buildpayment(),
           SizedBox(height: 10.w,),
-          Button()
+          Button('立即购买',(){
+            if(paytype==1){
+              ///支付信息，实际上要从后端获取
+              Map<String, dynamic> result = {};
+              fluwx
+                  .pay(
+                  which: Payment(
+                    appId: result['appid'].toString(),
+                    partnerId: result['partnerid'].toString(),
+                    prepayId: result['prepayid'].toString(),
+                    packageValue: result['package'].toString(),
+                    nonceStr: result['noncestr'].toString(),
+                    timestamp: result['timestamp'],
+                    sign: result['sign'].toString(),
+                  ));
+            }else{
+              tobias.pay('yourOrder');
+            }
+
+          })
         ],
       ),)
        ,
@@ -115,32 +166,47 @@ setState(() {
           boxShadow: [CommonStyle.boxShadow]
       ),
       child:
-      Column(
+      RadioGroup<int>(onChanged: ( v){
+        if(v!=null){
+          paytype = v;
+        }
+
+      }, child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-        Text('支付方式',style: TextStyle(fontSize: 20.w),),
-        SizedBox(height: 10.w,),
-         Container(
-           width: 300.w,
-           height: 40.w,
-           padding: EdgeInsets.all(5.w),
-           child: Row(
-             crossAxisAlignment: CrossAxisAlignment.center,
+          Text('支付方式',style: TextStyle(fontSize: 20.w),),
+          SizedBox(height: 10.w,),
+          Container(
+            width: 300.w,
+            height: 40.w,
+            padding: EdgeInsets.all(5.w),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
 
-             children: [
-               Image.asset('assets/images/a.png',width: 30.w,height: 30.w,),
-               SizedBox(width: 10.w,),
-               Text('微信'),
-               Expanded(child: SizedBox()),
-               SizedBox(width: 30.w,height: 30.w,child: Imagecheckbox( checktimg: 'assets/images/a.png', uncheckimg: 'assets/images/1.jpg', width: 20, height: 20, check: true, onchange: (bool p1) {  },),)
-             ],
-           ),
-           decoration: BoxDecoration(
-             color: Colors.white,
-             borderRadius: BorderRadius.circular(12.r),
-             border: Border.all(color: Colors.grey,width: 1.w)
-           ),
-         ),
+              children: [
+                Image.asset('assets/images/a.png',width: 30.w,height: 30.w,),
+                SizedBox(width: 10.w,),
+                Text('微信'),
+                Expanded(child: SizedBox()),
+
+                SizedBox(width: 30.w,height: 30.w,child:
+                Radio<int>(value: 1)
+                // Imagecheckbox( checktimg: 'assets/images/a.png', uncheckimg: 'assets/images/1.jpg', width: 20, height: 20, check: true, onchange: (bool p1) {
+                //
+                //   if(p1==true){
+                //     paytype = 1;
+                //   }
+                //
+                // },)
+                  ,)
+              ],
+            ),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12.r),
+                border: Border.all(color: Colors.grey,width: 1.w)
+            ),
+          ),
           SizedBox(height: 10,),
           Container(
             width: 300.w,
@@ -154,7 +220,10 @@ setState(() {
                 SizedBox(width: 10.w,),
                 Text('支付宝'),
                 Expanded(child: SizedBox()),
-                SizedBox(width: 30.w,height: 30.w,child: Imagecheckbox( checktimg: 'assets/images/a.png', uncheckimg: 'assets/images/1.jpg', width: 20, height: 20, check: true, onchange: (bool p1) {  },),)
+                SizedBox(width: 30.w,height: 30.w,child:
+                Radio<int>(value: 2)
+                // Imagecheckbox( checktimg: 'assets/images/a.png', uncheckimg: 'assets/images/1.jpg', width: 20, height: 20, check: true, onchange: (bool p1) {  },)
+                  ,)
               ],
             ),
             decoration: BoxDecoration(
@@ -163,7 +232,8 @@ setState(() {
                 border: Border.all(color: Colors.grey,width: 1.w)
             ),
           )
-      ],)
+        ],))
+
       ,
     )
     ;
