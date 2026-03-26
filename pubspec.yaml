@@ -55,7 +55,8 @@ dependencies:
   fluwx: ^5.7.5
   tobias: ^5.3.4
   url_launcher: ^6.3.2
-
+  flutter_countdown_timer: ^4.1.0
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

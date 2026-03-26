@@ -5,11 +5,14 @@ import 'package:get/get.dart';
 import 'package:servershop/pages/authentication.dart';
 import 'package:servershop/pages/consumerecord.dart';
 import 'package:servershop/pages/homepage.dart';
+import 'package:servershop/pages/loginwithpassword.dart';
+import 'package:servershop/pages/loginwithverificationcode.dart';
 import 'package:servershop/pages/mainpage.dart';
 import 'package:servershop/pages/membercenter.dart';
 import 'package:servershop/pages/myserver.dart';
 import 'package:servershop/pages/recharge.dart';
 import 'package:servershop/pages/rechargerecord.dart';
+import 'package:servershop/pages/register.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -64,7 +67,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           // builder: EasyLoading.init(),
-          home:Membercenter(),
+          home: Loginwithpassword(),
         );
       },
     );
