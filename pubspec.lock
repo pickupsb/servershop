@@ -341,6 +341,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "4.1.2"
+  icon_checkbox:
+    dependency: "direct main"
+    description:
+      name: icon_checkbox
+      sha256: ee24971352488963a52be7384ad8719f2152ecd644e4999edda8372406113e99
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.1"
   intl:
     dependency: "direct main"
     description:

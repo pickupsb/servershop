@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:servershop/pages/consumerecord.dart';
 import 'package:servershop/pages/homepage.dart';
 import 'package:servershop/pages/mainpage.dart';
 import 'package:servershop/pages/membercenter.dart';
 import 'package:servershop/pages/myserver.dart';
+import 'package:servershop/pages/recharge.dart';
 import 'package:servershop/pages/rechargerecord.dart';
 
 void main() {
@@ -52,7 +54,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           // builder: EasyLoading.init(),
-          home: Rechargerecord(),
+          home:Recharge(),
         );
       },
     );

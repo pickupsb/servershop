@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marquee/marquee.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import '../widgets/button.dart';
+import '../widgets/buttonwithimage.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -427,7 +427,7 @@ class _HomepageState extends State<Homepage> {
                   },
                 ),
                 SizedBox(height: 10.w,),
-                Button()
+                ButtonWithImage()
               ],
             ),
           ),
