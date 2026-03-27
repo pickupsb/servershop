@@ -874,6 +874,15 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.24.1"
+  wechat_authentication:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: main
+      resolved-ref: "9710f88136bec2bd6788c1ad49ef034e6f13251a"
+      url: "https://github.com/pickupsb/wechat_authentication.git"
+    source: git
+    version: "0.0.1"
   win32:
     dependency: transitive
     description:

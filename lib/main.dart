@@ -13,9 +13,11 @@ import 'package:servershop/pages/myserver.dart';
 import 'package:servershop/pages/recharge.dart';
 import 'package:servershop/pages/rechargerecord.dart';
 import 'package:servershop/pages/register.dart';
+import 'package:wechat_authentication/wechat_authentication.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  WechatAuthentication().init('appid');
   Fluwx fluwx = Fluwx();
   await fluwx.registerApi(
     appId: 'wxd930ea5d5a258f4f',
