@@ -2,6 +2,9 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+//        flatDir {
+//            dirs(project(":alipay_kit").file("libs"))
+//        }
     }
 }
 

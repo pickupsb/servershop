@@ -10,6 +10,7 @@ import 'package:servershop/pages/loginwithverificationcode.dart';
 import 'package:servershop/pages/mainpage.dart';
 import 'package:servershop/pages/membercenter.dart';
 import 'package:servershop/pages/myserver.dart';
+import 'package:servershop/pages/page.dart';
 import 'package:servershop/pages/recharge.dart';
 import 'package:servershop/pages/rechargerecord.dart';
 import 'package:servershop/pages/register.dart';
@@ -69,7 +70,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           // builder: EasyLoading.init(),
-          home: Loginwithpassword(),
+          home: Mainpage(),
         );
       },
     );

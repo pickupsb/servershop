@@ -60,7 +60,9 @@ dependencies:
     git:
       url: https://github.com/pickupsb/wechat_authentication.git
       ref: main
-
+#  url_launcher: ^6.3.0
+  # 可选：支付宝授权/支付插件（也可自己写MethodChannel）
+  alipay_kit: ^3.0.0
 
 dev_dependencies:
   flutter_test:

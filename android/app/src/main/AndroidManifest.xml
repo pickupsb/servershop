@@ -66,6 +66,35 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
+
+
+        <!-- 支付宝SDK必要Activity -->
+<!--        <activity-->
+<!--            android:name="com.alipay.sdk.app.H5PayActivity"-->
+<!--            android:configChanges="orientation|keyboardHidden|navigation"-->
+<!--            android:exported="false"-->
+<!--            android:screenOrientation="behind" />-->
+<!--        <activity-->
+<!--            android:name="com.alipay.sdk.app.H5AuthActivity"-->
+<!--            android:configChanges="orientation|keyboardHidden|navigation"-->
+<!--            android:exported="false"-->
+<!--            android:screenOrientation="behind" />-->
+
+<!--        &lt;!&ndash; 支付宝回调Scheme（替换为你的AppID） &ndash;&gt;-->
+<!--        <activity-->
+<!--            android:name="com.example.flutter_app.MainActivity"-->
+<!--         >-->
+<!--        <intent-filter>-->
+<!--            <action android:name="android.intent.action.VIEW" />-->
+<!--            <category android:name="android.intent.category.DEFAULT" />-->
+<!--            <category android:name="android.intent.category.BROWSABLE" />-->
+<!--            <data android:scheme="alipay202100xxxxxx" /> &lt;!&ndash; 你的AppID &ndash;&gt;-->
+<!--        </intent-filter>-->
+<!--    </activity>-->
+
+
+
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and
